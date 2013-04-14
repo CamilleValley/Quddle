@@ -1,0 +1,200 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewBag.Title = "MapCheck";
+}
+
+<h2>MapCheck</h2>
+
+<object data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="100%" height="100%">
+		  <param name="source" value="/ClientBin/SilverlightApplication1.xap"/>
+		  <param name="onError" value="onSilverlightError" />
+		  <param name="background" value="white" />
+		  <param name="minRuntimeVersion" value="5.0.61118.0" />
+		  <param name="autoUpgrade" value="true" />
+
+<div id='myMap' style="position:relative; width:500px; height:600px;"></div>
+
+<input id="chkbx_ShowFreeQ_HQ" type="checkbox" /> Show FreeQ heads quarters
+<input id="chkbx_ShowDirections" type="checkbox" disabled="disabled" /> Show directions to go to FreeQ head quarters
+
+<div id='itineraryDiv'>
+</div>
+
+<script src="/Scripts/jquery-1.4.4.js" type="text/javascript"></script>
+<script src="/Scripts/jquery.alerts.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0">
+</script>
+
+    <script type="text/javascript" src="/Scripts/Silverlight.js"></script>
+    <script type="text/javascript">
+        function onSilverlightError(sender, args) {
+            var appSource = "";
+            if (sender != null && sender != 0) {
+                appSource = sender.getHost().Source;
+            }
+
+            var errorType = args.ErrorType;
+            var iErrorCode = args.ErrorCode;
+
+            if (errorType == "ImageError" || errorType == "MediaError") {
+                return;
+            }
+
+            var errMsg = "Unhandled Error in Silverlight Application " + appSource + "\n";
+
+            errMsg += "Code: " + iErrorCode + "    \n";
+            errMsg += "Category: " + errorType + "       \n";
+            errMsg += "Message: " + args.ErrorMessage + "     \n";
+
+            if (errorType == "ParserError") {
+                errMsg += "File: " + args.xamlFile + "     \n";
+                errMsg += "Line: " + args.lineNumber + "     \n";
+                errMsg += "Position: " + args.charPosition + "     \n";
+            }
+            else if (errorType == "RuntimeError") {
+                if (args.lineNumber != 0) {
+                    errMsg += "Line: " + args.lineNumber + "     \n";
+                    errMsg += "Position: " + args.charPosition + "     \n";
+                }
+                errMsg += "MethodName: " + args.methodName + "     \n";
+            }
+
+            throw new Error(errMsg);
+        }
+    </script>
+
+<script type="text/javascript">
+
+    var map = null;
+    var ppHq = null;
+    var directionsManager = null;
+
+    function GetMap() {
+        map = new Microsoft.Maps.Map(document.getElementById('myMap'), { credentials: 'AiIo0eq8yDzQx40gwHidcSJzTIZjanj36I5v_xVhbNCuB-3GTeJ0tkTM2c7exntM' }); 
+    }
+
+    function AddLocationPin(latitude, longitude, title, description) {
+        var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+        map.entities.push(pushpin);
+        pushpin.setLocation(new Microsoft.Maps.Location(latitude, longitude));
+    }
+
+    function RemoveLocationPin(latitude, longitude) {
+        for (var i = map.entities.getLength() - 1; i >= 0; i--) {
+            var pushpin = map.entities.get(i);
+            if (pushpin instanceof Microsoft.Maps.Pushpin) {
+                if (pushpin._location != null && pushpin._location.latitude == latitude && pushpin._location.longitude == longitude) {
+                    map.entities.removeAt(i);
+                    break;
+                }
+            };
+        }
+    }
+
+    function createDirectionsManager()
+    {
+        var displayMessage;
+
+        if (!directionsManager) 
+        {
+            directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+            displayMessage = 'Directions Module loaded\n';
+            displayMessage += 'Directions Manager loaded';
+
+        }
+        directionsManager.resetDirections();
+        directionsErrorEventObj = Microsoft.Maps.Events.addHandler(directionsManager, 'directionsError', function (arg) {  });
+        directionsUpdatedEventObj = Microsoft.Maps.Events.addHandler(directionsManager, 'directionsUpdated', function () { });
+    }
+
+    function createWalkingRoute(fromLat, fromLong, toLat, toLong) {
+    if (!directionsManager) { createDirectionsManager(); }
+    directionsManager.resetDirections();
+    // Set Route Mode to walking 
+    directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.walking });
+    var currentLocation = new Microsoft.Maps.Directions.Waypoint({ address: 'From', location: new Microsoft.Maps.Location(fromLat, fromLong) });
+    directionsManager.addWaypoint(currentLocation);
+    var destinationLocation = new Microsoft.Maps.Directions.Waypoint({ address: 'To', location: new Microsoft.Maps.Location(toLat, toLong) });
+    directionsManager.addWaypoint(destinationLocation);
+    // Set the element in which the itinerary will be rendered
+    directionsManager.setRenderOptions({ itineraryContainer: document.getElementById('itineraryDiv') });
+    directionsManager.calculateDirections();
+    }
+
+    /*
+    function createWalkingRoute(fromLat, fromLong, toLat, toLong) {
+        if (!directionsManager) { createDirectionsManager(); }
+        directionsManager.resetDirections();
+        // Set Route Mode to walking 
+        directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.walking });
+        var seattleWaypoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Seattle, WA' });
+        directionsManager.addWaypoint(seattleWaypoint);
+        var redmondWaypoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Redmond, WA', location: new Microsoft.Maps.Location(47.678561, -122.130993) });
+        directionsManager.addWaypoint(redmondWaypoint);
+        directionsManager.setRenderOptions({ itineraryContainer: document.getElementById('itineraryDiv') });
+        directionsManager.calculateDirections();
+    }
+    */
+
+    function clearDisplay() {
+        if (!directionsManager) { createDirectionsManager(); }
+        directionsManager.clearDisplay();
+    }
+
+</script>
+
+<script type="text/javascript">
+    $("#chkbx_ShowFreeQ_HQ").click(function () {
+        if ($("#chkbx_ShowFreeQ_HQ").is(':checked')) {
+            $.post("/Map/HQLocation", null, function (data) {
+                AddLocationPin(data.Latitude, data.Longitude, data.Title, data.Description);
+            });
+            $("#chkbx_ShowDirections").removeAttr('disabled');
+        }
+        else {
+            $.post("/Map/HQLocation", null, function (data) {
+                RemoveLocationPin(data.Latitude, data.Longitude);
+            });
+            $("#chkbx_ShowDirections").attr('disabled', 'disabled');
+        }
+    });
+
+    $("#chkbx_ShowDirections").click(function () {
+        if ($("#chkbx_ShowDirections").is(':checked')) {
+            if (!directionsManager) {
+                Microsoft.Maps.loadModule('Microsoft.Maps.Directions', { callback: showDirections });
+            }
+            else {
+                showDirections();
+            }
+        }
+        else {
+            clearDisplay();
+        }
+    });
+
+    function showDirections() {
+        var geoLocationProvider = new Microsoft.Maps.GeoLocationProvider(map);
+        geoLocationProvider.getCurrentPosition(
+            {
+                successCallback: function (object) {
+                    $.post("/Map/HQLocation", null, function (data) {
+                        createWalkingRoute(object.center.latitude, object.center.longitude, data.Latitude, data.Longitude);
+                    });
+                }
+            }
+        );
+    }
+
+    $(document).ready(function () {
+        GetMap();
+        //call the action created to retrieve the data
+        $.post("/Map/Locations", null, function (data) {
+            //iterate through the 'data' retireved
+            $.each(data, function (item, location) {
+                AddLocationPin(location.Latitude, location.Longitude, location.Title, location.Description);
+            });
+        });
+    });
+</script>

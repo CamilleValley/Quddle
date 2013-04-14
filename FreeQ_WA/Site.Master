@@ -1,0 +1,67 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="FreeQ_WA.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title>Quddle - replaces physical lines and waiting rooms with virtual, mobile lines</title>
+    <meta name="keywords" content="Restaurant Buzzers, Restaurant Pagings Systems, Take a Number Systems, Paddle Pagers, Queues, Guest Pager, Coasters, Take a Number System, Restaurant Buzzer, Restaurant Paging System, Queueing System, Queueing, Restaurant Pagers" />
+    <meta name="description" content="Quddle Mobile Wait Management replaces physical lines with virtual mobile queues, increasing customer satisfaction, return rates and reducing no-shows and walk-aways." />
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+        <div class="header">
+            <div class="top_header">
+                <div class="title">
+                    <h1>
+                        <a href="<%=Page.ResolveUrl("~/Default.aspx") %>"><img alt="Qoodle" src="<%=Page.ResolveUrl("~/Images/logo.gif") %>"/></a>
+                    </h1>
+                </div>
+                <div class="loginDisplay">
+                    <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                        <AnonymousTemplate>
+                            <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Connexion</a>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                            [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                        <asp:MenuItem NavigateUrl="~/Account/Register.aspx" Text="Register"/>
+                        <asp:MenuItem NavigateUrl="~/Account/Manage.aspx" Text="Account"/>
+                        <asp:MenuItem NavigateUrl="~/Pages/UseCases.aspx" Text="Why Quddle"/>
+                        <asp:MenuItem NavigateUrl="~/Pages/About.aspx" Text="About"/>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        <div id="fb-root"></div>
+        <script>            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1&appId=133561190055109";
+                fjs.parentNode.insertBefore(js, fjs);
+            } (document, 'script', 'facebook-jssdk'));</script>
+
+        <div class="fb-like" data-href="http://quddle.org" data-send="true" data-width="450" data-show-faces="true"></div>
+    </div>
+    </form>
+</body>
+</html>

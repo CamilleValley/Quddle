@@ -1,0 +1,29 @@
+﻿/* ShowCurrentTicket
+----------------------------------------------------------*/
+
+.divQueueName
+{
+    font-size: 12px;
+}
+
+.divCurrentTicketNumber
+{
+    font-size: 15px;
+    color: Red;
+    width: 100%;
+    text-align: center;
+}
+
+.divExpectedHandlingTime
+{
+    font-size: 12px;
+}
+
+.mainDiv
+{
+    padding: 15px;
+    margin: 12px 8px 8px 8px;
+    width: 270px;
+    height: 200px;
+    background-color: #EDF4FE;
+}

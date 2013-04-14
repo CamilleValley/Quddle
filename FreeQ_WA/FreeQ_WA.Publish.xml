@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="ftp://ftp.quddle.org" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FTP" replaceMatchingFiles="True" userName="ftp__qddl" savePWD="True" userPWD="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAApetRgaUntkKrDNvfa6hQxQAAAAACAAAAAAAQZgAAAAEAACAAAADFb9u+x7FExZQJ7miNR2Jgmg6TTKiTkVhLebdYBqR3twAAAAAOgAAAAAIAACAAAADdfq+7p3lh3vrS1mBjZGT7COUBQ9jluFSuvYsMSmncKSAAAAAkzL7PVuNpFq/jtaap9R2O6Yzi9/x8V+pDwG+ZFwMrf0AAAABAr3NaqiqRIosKnrVhEcDW93UPhcbwOGWelo2bg/jU+SYqnxWkwkcwJuAaXPSdoCYwagcBIAwLfP01ogy7f3qW" SelectedForPublish="True">
+    <file relUrl="Images/ie6/borderBottomCenter.png" publishTime="02/16/2012 14:26:37" />
+    <file relUrl="Pages/Examples.aspx" publishTime="03/01/2013 11:46:50" />
+    <file relUrl="Global.asax" publishTime="02/07/2012 16:04:09" />
+    <file relUrl="Site.Master" publishTime="03/01/2013 11:39:36" />
+    <file relUrl="Styles/Site.css" publishTime="02/21/2013 17:26:38" />
+    <file relUrl="Views/ShowCurrentTicketDetails.ascx" publishTime="02/18/2013 19:34:28" />
+    <file relUrl="Queues/Confirmation.aspx" publishTime="03/01/2013 11:50:09" />
+    <file relUrl="Queues/Admin.aspx" publishTime="02/25/2013 16:10:40" />
+    <file relUrl="Views/PublicMinimal.aspx" publishTime="02/16/2012 13:19:47" />
+    <file relUrl="bin/FreeQ_WA.pdb" publishTime="03/01/2013 11:48:44" />
+    <file relUrl="Images/ie6/borderTopLeft.png" publishTime="02/16/2012 14:26:37" />
+    <file relUrl="colorbox/jquery-1.4.1.min.js" publishTime="02/07/2012 16:04:09" />
+    <file relUrl="Images/border.png" publishTime="02/16/2012 14:26:37" />
+    <file relUrl="Images/loading_background.png" publishTime="02/16/2012 14:26:37" />
+    <file relUrl="Images/ie6/borderMiddleLeft.png" publishTime="02/16/2012 14:26:37" />
+    <file relUrl="Account/Web.config" publishTime="02/07/2012 16:04:09" />
+    <file relUrl="Account/Register.aspx" publishTime="02/07/2012 16:04:09" />
+    <file relUrl="Scripts/JScripts.js" publishTime="02/18/2013 18:21:57" />
+    <file relUrl="Account/Login.aspx" publishTime="02/07/2012 16:04:09" />
+    <file relUrl="Views/Widget.aspx" publishTime="02/19/2013 18:44:36" />
+    <file relUrl="Images/ie6/borderMiddleRight.png" publishTime="02/16/2012 14:26:37" />
+    <file relUrl="Views/Public.aspx" publishTime="02/19/2013 18:37:52" />
+    <file relUrl="colorbox/jquery.colorbox.js" publishTime="11/27/2010 06:46:12" />
+    <file relUrl="bin/FreeQ_WA.dll" publishTime="03/01/2013 11:48:45" />
+    <file relUrl="Images/overlay.png" publishTime="02/16/2012 14:26:37" />
+    <file relUrl="Pages/UseCases.aspx" publishTime="03/01/2013 11:48:19" />
+    <file relUrl="Default.aspx" publishTime="02/18/2013 19:39:07" />
+    <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="02/07/2012 16:04:09" />
+    <file relUrl="Queues/Web.config" publishTime="02/08/2012 15:48:31" />
+    <file relUrl="Images/ie6/borderTopCenter.png" publishTime="02/16/2012 14:26:37" />
+    <file relUrl="Styles/ShowSmallView.css" publishTime="02/16/2012 13:32:10" />
+    <file relUrl="Images/ie6/borderBottomRight.png" publishTime="02/16/2012 14:26:37" />
+    <file relUrl="Images/controls.png" publishTime="02/16/2012 14:26:37" />
+    <file relUrl="Views/ShowTicketPicker.ascx" publishTime="02/20/2013 18:35:37" />
+    <file relUrl="Views/ShowList.aspx" publishTime="02/26/2013 18:06:32" />
+    <file relUrl="Styles/colorbox.css" publishTime="02/16/2012 14:37:12" />
+    <file relUrl="Queues/ShowWizard.aspx" publishTime="02/19/2013 18:45:36" />
+    <file relUrl="Images/ie6/borderBottomLeft.png" publishTime="02/16/2012 14:26:37" />
+    <file relUrl="Account/ChangePassword.aspx" publishTime="02/07/2012 16:04:09" />
+    <file relUrl="Images/ie6/borderTopRight.png" publishTime="02/16/2012 14:26:37" />
+    <file relUrl="Web.config" publishTime="02/24/2012 08:49:45" />
+    <file relUrl="Pages/About.aspx" publishTime="02/21/2013 17:36:32" />
+    <file relUrl="Account/Manage.aspx" publishTime="02/20/2013 18:53:11" />
+    <file relUrl="colorbox/jquery.colorbox-min.js" publishTime="11/27/2010 06:46:12" />
+    <file relUrl="Views/ShowCurrentTicket.ascx" publishTime="02/18/2013 19:32:41" />
+    <file relUrl="Views/ShowAdminOptions.ascx" publishTime="02/25/2013 16:22:36" />
+    <file relUrl="Images/loading.gif" publishTime="02/16/2012 14:26:37" />
+    <file relUrl="Styles/ShowBigView.css" publishTime="02/16/2012 13:19:09" />
+    <file relUrl="bin/AjaxControlToolkit.dll" publishTime="11/16/2011 14:21:58" />
+    <file relUrl="Images/logo.gif" publishTime="02/09/2012 12:11:22" />
+    <file relUrl="Views/GetTicket.aspx" publishTime="02/22/2013 15:41:56" />
+  </publishProfile>
+</publishData>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<FreeQ_WS.Classes.Queue>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Queue_Name
+        </th>
+        <th>
+            Queue_IsActive
+        </th>
+        <th>
+            Queue_CreationDate
+        </th>
+        <th>
+            Queue_UserID
+        </th>
+        <th>
+            Queue_Current_Ticket_ID
+        </th>
+        <th>
+            Queue_Next_Increment
+        </th>
+        <th>
+            Queue_Address
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Queue_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Queue_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Queue_ID })
+        </td>
+        <td>
+            @item.Queue_Name
+        </td>
+        <td>
+            @item.Queue_IsActive
+        </td>
+        <td>
+            @String.Format("{0:g}", item.Queue_CreationDate)
+        </td>
+        <td>
+            @item.Queue_UserID
+        </td>
+        <td>
+            @item.Queue_Current_Ticket_ID
+        </td>
+        <td>
+            @item.Queue_Next_Increment
+        </td>
+        <td>
+            @item.Queue_Address
+        </td>
+    </tr>
+}
+
+</table>
+
